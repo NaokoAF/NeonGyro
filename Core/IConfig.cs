@@ -19,7 +19,7 @@ public interface IConfig
 	IConfigEntry<bool> FlickStickEnabled { get; }
 	IConfigEntry<float> FlickThreshold { get; }
 	IConfigEntry<float> FlickTime { get; }
-	IConfigEntry<float> FlickSmoothingTreshold { get; }
+	IConfigEntry<float> FlickSmoothingThreshold { get; }
 	IConfigEntry<float> FlickSmoothingTime { get; }
 	IConfigEntry<float> FlickForwardDeadzone { get; }
 }

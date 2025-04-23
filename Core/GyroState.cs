@@ -58,8 +58,8 @@ class GyroState
 		FlickStick.FlickThreshold = config.FlickThreshold.Value;
 		FlickStick.FlickTime = config.FlickTime.Value;
 		FlickStick.ForwardDeadzone = config.FlickForwardDeadzone.Value * MathUtils.DegreesToRadians;
-		FlickStick.SmoothingThresholdDirect = config.FlickSmoothingTreshold.Value * MathUtils.DegreesToRadians;
-		FlickStick.SmoothingThresholdSmooth = config.FlickSmoothingTreshold.Value * MathUtils.DegreesToRadians * 0.5f;
+		FlickStick.SmoothingThresholdDirect = config.FlickSmoothingThreshold.Value * MathUtils.DegreesToRadians;
+		FlickStick.SmoothingThresholdSmooth = config.FlickSmoothingThreshold.Value * MathUtils.DegreesToRadians * 0.5f;
 		FlickStick.SmoothingTime = config.FlickSmoothingTime.Value;
 		return FlickStick.Update(stick, deltaTime);
 	}

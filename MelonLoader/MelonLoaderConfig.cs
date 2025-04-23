@@ -24,7 +24,7 @@ public class MelonLoaderConfig : IConfig
 	public IConfigEntry<float> FlickThreshold { get; }
 	public IConfigEntry<float> FlickTime { get; }
 	public IConfigEntry<float> FlickForwardDeadzone { get; }
-	public IConfigEntry<float> FlickSmoothingTreshold { get; }
+	public IConfigEntry<float> FlickSmoothingThreshold { get; }
 	public IConfigEntry<float> FlickSmoothingTime { get; }
 
 	MelonPreferences_Category category;
@@ -51,10 +51,10 @@ public class MelonLoaderConfig : IConfig
 			"Controller button to calibrate gyro. Lay the controller on a flat surface and hold this button down for a second or two to correct gyro drift"
 		);
 		GyroTightening = CreateEntry(nameof(GyroTightening), 6f,
-			"Rotations below this treshold get squeezed to 0, like a soft deadzone. Helps reduse effets of shaky hands"
+			"Rotations below this threshold get squeezed to 0, like a soft deadzone. Helps reduse effets of shaky hands"
 		);
 		GyroSmoothingThreshold = CreateEntry(nameof(GyroSmoothingThreshold), 0f,
-			"Rotations below this treshold are smoothed. Helps reduce effects of shaky hands, but adds latency"
+			"Rotations below this threshold are smoothed. Helps reduce effects of shaky hands, but adds latency"
 		);
 		GyroSmoothingTime = CreateEntry(nameof(GyroSmoothingTime), 0.075f,
 			"Amount of time to smooth gyro for when below threshold"
@@ -66,10 +66,10 @@ public class MelonLoaderConfig : IConfig
 			"Rotation speed threshold at which to use GyroAccelerationSensitivityFast"
 		);
 		GyroAccelerationSensitivitySlow = CreateEntry(nameof(GyroAccelerationSensitivitySlow), 1f,
-			"Sensitivity to use when within the treshold GyroAccelerationThresholdSlow"
+			"Sensitivity to use when within the threshold GyroAccelerationThresholdSlow"
 		);
 		GyroAccelerationSensitivityFast = CreateEntry(nameof(GyroAccelerationSensitivityFast), 1f,
-			"Sensitivity to use when within the treshold GyroAccelerationThresholdFast"
+			"Sensitivity to use when within the threshold GyroAccelerationThresholdFast"
 		);
 		FlickStickEnabled = CreateEntry(nameof(FlickStickEnabled), true,
 			"Replace right stick aiming with flick stick. Requires gyro to also be enabled"
@@ -83,8 +83,8 @@ public class MelonLoaderConfig : IConfig
 		FlickForwardDeadzone = CreateEntry(nameof(FlickForwardDeadzone), 5f,
 			"Forward flicks below this angle are ignored. Helps avoid unintended flicks when moving the stick up"
 		);
-		FlickSmoothingTreshold = CreateEntry(nameof(FlickSmoothingTreshold), 2.3f,
-			"Angle changes below this treshold are smoothed. Leave at default if unsure"
+		FlickSmoothingThreshold = CreateEntry(nameof(FlickSmoothingThreshold), 2.3f,
+			"Angle changes below this threshold are smoothed. Leave at default if unsure"
 		);
 		FlickSmoothingTime = CreateEntry(nameof(FlickSmoothingTime), 0.064f,
 			"Amount of time to smooth flick stick for when below threshold. Leave at default if unsure"
