@@ -1,5 +1,6 @@
 # NeonGyro
-A mod that adds native Gyro Aiming and Flick Stick to [Neon White](https://store.steampowered.com/app/1533420/Neon_White/).
+A mod that adds native Gyro Aiming and Flick Stick to [Neon White](https://store.steampowered.com/app/1533420/Neon_White/)
+<video src="https://github.com/user-attachments/assets/f4602b48-2748-4602-b6ec-c7d08a78b2a9"></video>
 
 ## Installation
 1. Download [MelonLoader](https://melonloader.co/) and install it onto Neon White.
