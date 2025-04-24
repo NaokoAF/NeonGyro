@@ -1,4 +1,5 @@
-﻿using MelonLoader;
+﻿using GyroHelpers;
+using MelonLoader;
 using NeonGyro.Core;
 
 namespace NeonGyro.MelonLoader;
@@ -23,6 +24,7 @@ public class MelonLoaderConfig : IConfig
 	public IConfigEntry<bool> FlickStickEnabled { get; }
 	public IConfigEntry<float> FlickThreshold { get; }
 	public IConfigEntry<float> FlickTime { get; }
+	public IConfigEntry<FlickSnapping> FlickSnapping { get; }
 	public IConfigEntry<float> FlickForwardDeadzone { get; }
 	public IConfigEntry<float> FlickSmoothingThreshold { get; }
 	public IConfigEntry<float> FlickSmoothingTime { get; }
@@ -80,8 +82,11 @@ public class MelonLoaderConfig : IConfig
 		FlickTime = CreateEntry(nameof(FlickTime), 0.1f,
 			"Amount of time it takes to animate the initial flick"
 		);
-		FlickForwardDeadzone = CreateEntry(nameof(FlickForwardDeadzone), 5f,
-			"Forward flicks below this angle are ignored. Helps avoid unintended flicks when moving the stick up"
+		FlickSnapping = CreateEntry(nameof(FlickSnapping), GyroHelpers.FlickSnapping.ForwardOnly,
+			"Snap flicks to cardinal directions"
+		);
+		FlickForwardDeadzone = CreateEntry(nameof(FlickForwardDeadzone), 7f,
+			"Forward flicks below this angle are ignored. Helps avoid unintended flicks when moving the stick up. Only applies when FlickSnapping is set to ForwardOnly"
 		);
 		FlickSmoothingThreshold = CreateEntry(nameof(FlickSmoothingThreshold), 2.3f,
 			"Angle changes below this threshold are smoothed. Leave at default if unsure"

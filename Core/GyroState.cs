@@ -48,7 +48,7 @@ public class GyroState
 	{
 		FlickStick.FlickThreshold = config.FlickThreshold.Value;
 		FlickStick.FlickTime = config.FlickTime.Value;
-		FlickStick.Snapping = FlickSnapping.ForwardOnly;
+		FlickStick.Snapping = config.FlickSnapping.Value;
 		FlickStick.SnappingStrength = 1f;
 		FlickStick.SnappingForwardDeadzone = config.FlickForwardDeadzone.Value * MathHelper.DegreesToRadians;
 		FlickStick.SmoothingThresholdDirect = config.FlickSmoothingThreshold.Value * MathHelper.DegreesToRadians;

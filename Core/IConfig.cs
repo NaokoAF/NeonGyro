@@ -1,4 +1,6 @@
-﻿namespace NeonGyro.Core;
+﻿using GyroHelpers;
+
+namespace NeonGyro.Core;
 
 public interface IConfig
 {
@@ -19,7 +21,8 @@ public interface IConfig
 	IConfigEntry<bool> FlickStickEnabled { get; }
 	IConfigEntry<float> FlickThreshold { get; }
 	IConfigEntry<float> FlickTime { get; }
+	IConfigEntry<FlickSnapping> FlickSnapping { get; }
+	IConfigEntry<float> FlickForwardDeadzone { get; }
 	IConfigEntry<float> FlickSmoothingThreshold { get; }
 	IConfigEntry<float> FlickSmoothingTime { get; }
-	IConfigEntry<float> FlickForwardDeadzone { get; }
 }
