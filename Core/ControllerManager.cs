@@ -32,6 +32,14 @@ public unsafe class ControllerManager
 		sdl.ControllerSensorUpdated += Sdl_ControllerSensorUpdated;
 	}
 
+	public void PrePoll()
+	{
+		foreach (var gyro in gyroStates.Values)
+		{
+			gyro.GyroInput.Begin();
+		}
+	}
+
 	public void Update(float deltaTime)
 	{
 		int gyroButton = (int)config.GyroButton.Value;
@@ -56,7 +64,7 @@ public unsafe class ControllerManager
 			}
 			else
 			{
-				activeControllerGyro.FlushGyro();
+				activeControllerGyro.Reset();
 			}
 
 			flickDelta = activeControllerGyro.UpdateFlickStick(config, activeController.RightStick, deltaTime);
@@ -85,7 +93,7 @@ public unsafe class ControllerManager
 
 		if (controller != null && gyroStates.TryGetValue(controller, out var gyro))
 		{
-			gyro.FlushGyro();
+			gyro.Reset();
 			activeControllerGyro = gyro;
 		}
 		else
@@ -121,6 +129,14 @@ public unsafe class ControllerManager
 		if (!config.GyroEnabled.Value) return; // skip for performance
 		if (activeController != controller || activeControllerGyro == null) return;
 
-		activeControllerGyro.InputGyro(controller.Gyroscope, controller.Accelerometer, controller.GyroscopeTimestamp);
+		switch (sensor)
+		{
+			case SDL_SensorType.SDL_SENSOR_GYRO:
+				activeControllerGyro.GyroInput.InputGyro(data, timestamp);
+				break;
+			case SDL_SensorType.SDL_SENSOR_ACCEL:
+				activeControllerGyro.GyroInput.InputAccelerometer(data, timestamp);
+				break;
+		}
 	}
 }

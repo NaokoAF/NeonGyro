@@ -1,4 +1,4 @@
-﻿using NeonGyro.Core.Gyro;
+﻿using GyroHelpers;
 using NeonGyro.SDL3;
 using System.Numerics;
 using static NeonGyro.SDL3.SDL;
@@ -45,9 +45,9 @@ public unsafe class SDLController
 	public void Rumble(float lowFrequency, float highFrequency, float duration)
 	{
 		SDL_RumbleGamepad(Gamepad,
-			(ushort)(MathUtils.Clamp(lowFrequency, 0f, 1f) * 65535f),
-			(ushort)(MathUtils.Clamp(highFrequency, 0f, 1f) * 65535f),
-			(uint)(MathUtils.Clamp(duration, 0f, 4294967.295f) * 1000f)
+			(ushort)(MathHelper.Clamp(lowFrequency, 0f, 1f) * 65535f),
+			(ushort)(MathHelper.Clamp(highFrequency, 0f, 1f) * 65535f),
+			(uint)(MathHelper.Clamp(duration, 0f, 4294967.295f) * 1000f)
 		);
 	}
 

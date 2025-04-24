@@ -36,6 +36,7 @@ public static class Mod
 
 	public static void Update()
 	{
+		ControllerManager!.PrePoll();
 		SDL.Poll();
 
 		ControllerManager!.GyroPaused = !Application.isFocused;

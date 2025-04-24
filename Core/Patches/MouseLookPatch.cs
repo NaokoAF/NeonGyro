@@ -1,5 +1,5 @@
-﻿using HarmonyLib;
-using NeonGyro.Core.Gyro;
+﻿using GyroHelpers;
+using HarmonyLib;
 using UnityEngine;
 
 namespace NeonGyro.Core.Patches;
@@ -24,7 +24,7 @@ internal static class MouseLookPatch
 
 		if (Mod.Config.FlickStickEnabled.Value)
 		{
-			float flick = Mod.ControllerManager.FlickStickDelta * MathUtils.RadiansToDegrees;
+			float flick = Mod.ControllerManager.FlickStickDelta * MathHelper.RadiansToDegrees;
 			___rotAmountX -= flick;
 		}
 		else
@@ -35,7 +35,7 @@ internal static class MouseLookPatch
 		}
 
 		// gyro
-		var gyro = Mod.ControllerManager.GyroDelta * MathUtils.RadiansToDegrees;
+		var gyro = Mod.ControllerManager.GyroDelta * MathHelper.RadiansToDegrees;
 		gyro *= Mod.Config.GyroSensitivity.Value;
 
 		___rotAmountX -= gyro.Y;
