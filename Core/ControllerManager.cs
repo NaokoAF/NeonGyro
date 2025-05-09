@@ -132,10 +132,10 @@ public unsafe class ControllerManager
 		switch (sensor)
 		{
 			case SDL_SensorType.SDL_SENSOR_GYRO:
-				activeControllerGyro.GyroInput.InputGyro(data, timestamp);
+				activeControllerGyro.GyroInput.AddGyroSample(data, timestamp);
 				break;
 			case SDL_SensorType.SDL_SENSOR_ACCEL:
-				activeControllerGyro.GyroInput.InputAccelerometer(data, timestamp);
+				activeControllerGyro.GyroInput.AddAccelerometerSample(data, timestamp);
 				break;
 		}
 	}
