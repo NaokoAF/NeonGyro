@@ -1,5 +1,6 @@
 ﻿using MelonLoader;
 using NeonGyro.Core;
+using NeonGyro.Core.Patches;
 using NeonGyro.MelonLoader;
 
 [assembly: MelonInfo(typeof(MelonLoaderMod), ModInfo.Name, ModInfo.Version, ModInfo.Author, null)]
@@ -11,7 +12,7 @@ public class MelonLoaderMod : MelonMod
 	public override void OnInitializeMelon()
 	{
 		HarmonyLib.Harmony harmony = new(ModInfo.Guid);
-		harmony.PatchAll(typeof(MelonLoaderMod).Assembly);
+		harmony.PatchAll(typeof(MouseLookPatch));
 
 		Mod.Logger = new MelonLoaderLogger(LoggerInstance);
 		Mod.Initialize(new MelonLoaderConfig());

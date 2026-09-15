@@ -1,14 +1,12 @@
 ﻿using GyroHelpers;
 using HarmonyLib;
 using UnityEngine;
-using System.Runtime.CompilerServices;
 
 namespace NeonGyro.Core.Patches;
 
-[HarmonyPatch(typeof(MouseLook))]
 internal static class MouseLookPatch
 {
-	[HarmonyPatch("UpdateRotation")]
+	[HarmonyPatch(typeof(MouseLook), "UpdateRotation")]
 	[HarmonyPrefix]
 	static void UpdateRotationPrefix(MouseLook __instance, bool playerAlive, ref float ___rotAmountX, ref float ___rotAmountY, ref float ____accelRamp, ref float ___rotationY)
 	{
