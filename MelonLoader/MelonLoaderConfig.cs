@@ -99,12 +99,12 @@ public class MelonLoaderConfig : IConfig
 			"Amount of time to smooth flick stick for when below threshold. Leave at default if unsure"
 		);
 		ResetButton = CreateEntry(nameof(ResetButton), ControllerButton.LeftStick,
-			"Controller button to reset the camera y-axis"
+			"Controller button to reset the camera vertically"
 		);
 		ResetButtonMode = CreateEntry(nameof(ResetButtonMode), Core.ResetButtonMode.Disabled,
 			"Behavior of the reset button"
 		);
-		ResetTime = CreateEntry(nameof(ResetTime), 0.1f,
+		ResetTime = CreateEntry(nameof(ResetTime), 0.15f,
 			"Amount of time it takes to animate the camera reset"
 		);
 	}

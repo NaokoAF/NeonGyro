@@ -9,7 +9,7 @@ public unsafe class ControllerManager
 	public Vector2 GyroDelta => gyroDelta;
 	public float FlickStickDelta => flickDelta;
 	public bool GyroPaused { get; set; }
-	public bool ResetButtonNewlyPressed { get; private set; }
+	public bool ResetButtonDown { get; private set; }
 
 	public event Action<SDLController, Vector3>? GyroBiasCalibrated;
 	public event Action<SDLController?>? ActiveControllerChanged;
@@ -39,9 +39,6 @@ public unsafe class ControllerManager
 		{
 			gyro.GyroInput.Begin();
 		}
-
-		// reset button will get updated during SDL polling
-		ResetButtonNewlyPressed = false;
 	}
 
 	public void Update(float deltaTime)
@@ -128,9 +125,9 @@ public unsafe class ControllerManager
 
 		// reset camera
 		ControllerButton resetButton = config.ResetButton.Value;
-		if (down && button == resetButton && config.ResetButtonMode.Value == ResetButtonMode.On)
+		if (button == resetButton && config.ResetButtonMode.Value == ResetButtonMode.On)
 		{
-			ResetButtonNewlyPressed = true;
+			ResetButtonDown = down;
 		}
 	}
 
