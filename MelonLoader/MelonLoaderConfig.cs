@@ -29,6 +29,10 @@ public class MelonLoaderConfig : IConfig
 	public IConfigEntry<float> FlickSmoothingThreshold { get; }
 	public IConfigEntry<float> FlickSmoothingTime { get; }
 
+	public IConfigEntry<ControllerButton> ResetButton { get; }
+	public IConfigEntry<ResetButtonMode> ResetButtonMode { get; }
+	public IConfigEntry<float> ResetTime { get; }
+
 	MelonPreferences_Category category;
 
 	internal MelonLoaderConfig()
@@ -53,7 +57,7 @@ public class MelonLoaderConfig : IConfig
 			"Controller button to calibrate gyro. Lay the controller on a flat surface and hold this button down for a second or two to correct gyro drift"
 		);
 		GyroTightening = CreateEntry(nameof(GyroTightening), 6f,
-			"Rotations below this threshold get squeezed to 0, like a soft deadzone. Helps reduse effets of shaky hands"
+			"Rotations below this threshold get squeezed to 0, like a soft deadzone. Helps reduce effects of shaky hands"
 		);
 		GyroSmoothingThreshold = CreateEntry(nameof(GyroSmoothingThreshold), 0f,
 			"Rotations below this threshold are smoothed. Helps reduce effects of shaky hands, but adds latency"
@@ -93,6 +97,15 @@ public class MelonLoaderConfig : IConfig
 		);
 		FlickSmoothingTime = CreateEntry(nameof(FlickSmoothingTime), 0.064f,
 			"Amount of time to smooth flick stick for when below threshold. Leave at default if unsure"
+		);
+		ResetButton = CreateEntry(nameof(ResetButton), ControllerButton.LeftStick,
+			"Controller button to reset the camera vertically"
+		);
+		ResetButtonMode = CreateEntry(nameof(ResetButtonMode), Core.ResetButtonMode.Disabled,
+			"Behavior of the reset button"
+		);
+		ResetTime = CreateEntry(nameof(ResetTime), 0.15f,
+			"Amount of time it takes to animate the camera reset"
 		);
 	}
 

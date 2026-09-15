@@ -9,6 +9,7 @@ public unsafe class ControllerManager
 	public Vector2 GyroDelta => gyroDelta;
 	public float FlickStickDelta => flickDelta;
 	public bool GyroPaused { get; set; }
+	public bool ResetButtonDown { get; private set; }
 
 	public event Action<SDLController, Vector3>? GyroBiasCalibrated;
 	public event Action<SDLController?>? ActiveControllerChanged;
@@ -117,10 +118,16 @@ public unsafe class ControllerManager
 
 		// toggle gyro
 		ControllerButton gyroButton = config.GyroButton.Value;
-		ControllerButton gyroCalibrateButton = config.GyroCalibrateButton.Value;
 		if (down && button == gyroButton && config.GyroButtonMode.Value == GyroButtonMode.Toggle)
 		{
 			gyroButtonState = !gyroButtonState;
+		}
+
+		// reset camera
+		ControllerButton resetButton = config.ResetButton.Value;
+		if (button == resetButton && config.ResetButtonMode.Value == ResetButtonMode.On)
+		{
+			ResetButtonDown = down;
 		}
 	}
 

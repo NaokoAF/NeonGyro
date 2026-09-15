@@ -25,4 +25,7 @@ public interface IConfig
 	IConfigEntry<float> FlickForwardDeadzone { get; }
 	IConfigEntry<float> FlickSmoothingThreshold { get; }
 	IConfigEntry<float> FlickSmoothingTime { get; }
+	IConfigEntry<ControllerButton> ResetButton { get; }
+	IConfigEntry<ResetButtonMode> ResetButtonMode { get; }
+	IConfigEntry<float> ResetTime { get; }
 }
