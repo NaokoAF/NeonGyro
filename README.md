@@ -12,7 +12,7 @@ A mod that adds native Gyro Aiming and Flick Stick to [Neon White](https://store
 
 ## Supported Controllers
 * **DualShock 4 (PS4):** Fully supported and tested.
-* **DualSense (PS5):** Tested and it working.
+* **DualSense (PS5):** Fully supported and tested.
 * **Switch Pro Controller:** Unsupported by the game.
 * **Xbox:** Unsupported. Mod disables itself.
 
